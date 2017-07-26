@@ -1,7 +1,6 @@
 <template>
-  <div class="hello">
-<navigation :logout="logout" />
-<todos-list :todos="todos.data" />
+  <div class="dashboard">
+    <navigation :logout="logout" />
   </div>
 </template>
 
@@ -66,4 +65,11 @@ export default {
 </script>
 
 <style scoped>
+
+  .dashboard {
+  background-color: #F5F7FA !important;
+  overflow-y: hidden;
+  height: 100vh;
+  }
+
 </style>
