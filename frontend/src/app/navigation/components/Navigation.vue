@@ -4,14 +4,10 @@
       <a class="navbar-item">
         <div class="gathr">/</div>
       </a>
-      <a class="navbar-item is-hidden-mobile">
-        Home
-      </a>
-      <router-link class="navbar-item is-hidden-mobile" to="/projects">Projects</router-link>
-      <router-link class="navbar-item is-hidden-mobile" to="/phone">Phone</router-link>
-      <a class="navbar-item is-hidden-mobile">
-        Calendar
-      </a>
+      <router-link class="navbar-item is-hidden-mobile" to="/dashboard">Home</router-link>
+      <router-link class="navbar-item is-hidden-mobile" to="/dashboard/projects">Projects</router-link>
+      <router-link class="navbar-item is-hidden-mobile" to="/dashboard/phone">Phone</router-link>
+      <router-link class="navbar-item is-hidden-mobile" to="/dashboard/calendar">Calendar</router-link>
       <a class="navbar-item is-hidden-mobile" href="javascript://" v-on:click.prevent="logout">
         Logout
       </a>

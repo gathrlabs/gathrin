@@ -13,3 +13,7 @@
 <style scoped>
 
 </style>
+  ;; for magithub
+  (use-package magithub
+    :after magit
+    :config (magithub-feature-autinject t))

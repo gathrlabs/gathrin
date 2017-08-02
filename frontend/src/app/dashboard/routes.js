@@ -1,6 +1,7 @@
 import Dashboard from './Dashboard'
 import * as componentsProjects from './projects/components'
 import * as componentsPhone from './phone/components'
+import * as componentsCalendar from './calendar/components'
 
 export default [
   {
@@ -9,14 +10,19 @@ export default [
     name: 'Dashboard',
     children: [
       {
-        path: '/projects',
+        path: '/dashboard/projects',
         component: componentsProjects.Projects,
         name: 'Projects'
       },
       {
-        path: '/phone',
+        path: '/dashboard/phone',
         component: componentsPhone.Phone,
         name: 'Phone'
+      },
+      {
+        path: '/dashboard/calendar',
+        component: componentsCalendar.Calendar,
+        name: 'Calendar'
       }
     ]
   }

@@ -15,16 +15,16 @@
                 {{error.message}}
               </div>
               <p class="control">
-                <input class="email-input input" type="text" placeholder="Email" name="email" v-model="email">
+                <input class="email-input input" type="text" placeholder="Email" name="email" v-model="email" v-on:keyup.enter="onSubmit(email, password)">
               </p>
               <p class="control">
-                <input class="password-input input" type="password" placeholder="Password" name="password" v-model="password">
+                <input class="password-input input" type="password" placeholder="Password" name="password" v-model="password" v-on:keyup.enter="onSubmit(email, password)">
               </p>
               <p class="has-text-left">
               <a href="login" class="forgot-password">Forgot password?</a>
               </p>
               <p class="control has-text-centered">
-                <button class="button__login" v-on:click.prevent="onSubmit(email, password)">Login</button>
+                <button class="button__login" v-on:click.prevent="onSubmit(email, password)" v-on:keyup.enter="onSubmit(email, password)">Login</button>
               </p>
               <p class="has-text-centered">
                 <a href="register" class="register">Don't have an account yet? Register here.</a>
