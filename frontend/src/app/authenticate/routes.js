@@ -10,10 +10,5 @@ export default [
     path: '/register',
     name: 'Register',
     component: components.Register
-  },
-  {
-    path: '/dashboard',
-    name: 'Dashboard',
-    component: components.Dashboard
   }
 ]

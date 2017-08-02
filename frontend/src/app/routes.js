@@ -1,4 +1,4 @@
 import { routes as authenticate } from './authenticate'
-import { routes as projects } from './projects'
+import { routes as dashboard } from './dashboard'
 
-export default [ ...authenticate, ...projects ]
+export default [ ...authenticate, ...dashboard ]

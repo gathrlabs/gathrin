@@ -1,12 +1,22 @@
 <template>
   <div class="dashboard">
+    <navigation :logout="logout"></navigation>
+    <div class="staging">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script>
+import Navigation from '../navigation/components/Navigation'
+
 import { mapGetters, mapActions, mapState } from 'vuex'
 
 export default {
+
+  components: {
+    Navigation
+  },
   computed: {
     ...mapState('auth', [
       'user'

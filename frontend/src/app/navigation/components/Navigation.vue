@@ -7,12 +7,8 @@
       <a class="navbar-item is-hidden-mobile">
         Home
       </a>
-      <a class="navbar-item is-hidden-mobile">
-        Projects
-      </a>
-      <a class="navbar-item is-hidden-mobile">
-        Phone
-      </a>
+      <router-link class="navbar-item is-hidden-mobile" to="/projects">Projects</router-link>
+      <router-link class="navbar-item is-hidden-mobile" to="/phone">Phone</router-link>
       <a class="navbar-item is-hidden-mobile">
         Calendar
       </a>
