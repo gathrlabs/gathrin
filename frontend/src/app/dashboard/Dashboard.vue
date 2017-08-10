@@ -72,9 +72,9 @@ export default {
 <style scoped>
 
   .dashboard {
-  background-color: #F5F7FA !important;
-  overflow-y: hidden;
-  height: 100vh;
+    background-color: #F5F7FA !important;
+    overflow-y: auto;
+    height: 100vh;
   }
 
 </style>

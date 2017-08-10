@@ -6,11 +6,36 @@
           <p class="card-header-title">
             Finish Gathr/In
           </p>
-          <a class="card-header-icon">
-            <span class="icon">
-              <i class="fa fa-ellipsis-h"></i>
-            </span>
-          </a>
+          <div class="dropdown is-right is-active" @click="toggle" v-click-outside="hide">
+            <div class="dropdown-trigger">
+              <a class="card-header-icon" aria-haspopup="true" aria-controls="projectcard-utilities">
+                <span class="icon">
+                  <i class="fa fa-ellipsis-h"></i>
+                </span>
+              </a>
+            </div>
+            <div v-show="opened" class="dropdown-menu is-right" id="projectcard-utilities" role="menu">
+              <div class="dropdown-content">
+                <div class="dropdown-item">
+                  <ul>
+                     <a class="navbar-item">
+                        Activity Overview
+                    </a>
+                    <a class="navbar-item">
+                      Elements
+                    </a>
+                    <a class="navbar-item">
+                      Components
+                    </a>
+                    <hr class="navbar-divider">
+                    <div class="navbar-item">
+                      <i class="fa fa-trash-o"><div class="icon-text">Delete</div></i>
+                    </div>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </header>
         <div class="card-content">
           <div class="content">
@@ -27,17 +52,37 @@
 
 <script>
 import Item from './Item'
+import ClickOutside from 'vue-click-outside'
 
 export default {
   name: 'ProjectCard',
+  data () {
+    return {
+      opened: false
+    }
+  },
   components: {
     Item
+  },
+  methods: {
+    toggle () {
+      this.opened = true
+    },
+    hide () {
+      this.opened = false
+    }
+  },
+  mounted () {
+    this.popupItem = this.$el
+  },
+  directives: {
+    ClickOutside
   }
-
 }
 </script>
 
 <style scoped>
+
 .card {
     border-radius: 4px;
     border: none;
@@ -50,7 +95,7 @@ export default {
 }
 
 .card-header-icon {
-    color: #ffd6a5;
+    color: #3a68ff;
 }
 
 .card-header-icon:hover {
@@ -67,4 +112,32 @@ export default {
     color: #4B74FF;
     transition: all 0.2s ease-in-out;
 }
+
+.dropdown-content {
+    background-color: #7D9BFF;
+}
+
+.dropdown-item .navbar-item {
+    color: white;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+}
+
+.dropdown-item .navbar-item:hover {
+    background-color: #3a68ff;
+}
+
+.navbar-divider {
+  display: block;
+}
+
+.icon-text {
+  font-family: Avenir-Heavy;
+  display: inline-block;
+  float: right;
+  padding-left: 5px;
+  margin-top: 1px;
+}
+
 </style>

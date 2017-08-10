@@ -5,6 +5,8 @@
     </div>
     <div class="columns is-desktop is-multiline">
       <projectcard></projectcard>
+      <projectcard></projectcard>
+      <projectcard></projectcard>
     </div>
   </section>
 </template>
@@ -25,6 +27,13 @@ section {
     margin-left: 50px;
     margin-right: 50px;
     margin-top: 10px;
+}
+
+@media (min-width: 1700px) {
+    section {
+      margin-left: 20%;
+      margin-right: 20%;
+    }
 }
 
 .page__header {
