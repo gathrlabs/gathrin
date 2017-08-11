@@ -4,44 +4,36 @@
       <a class="navbar-item">
         <div class="gathr">/</div>
       </a>
-      <router-link class="navbar-item is-hidden-mobile" to="/dashboard">Home</router-link>
-      <router-link class="navbar-item is-hidden-mobile" to="/dashboard/projects">Projects</router-link>
-      <router-link class="navbar-item is-hidden-mobile" to="/dashboard/phone">Phone</router-link>
-      <router-link class="navbar-item is-hidden-mobile" to="/dashboard/calendar">Calendar</router-link>
+      <router-link class="navbar-item is-hidden-mobile" to="/dashboard" v-bind:class="{ active: isActive('home') }" @click="setActive('home')">Home</router-link>
+      <router-link class="navbar-item is-hidden-mobile" to="/dashboard/projects" v-bind:class="{ active: isActive('projects') }" v-on:click="setActive('projects')">Projects</router-link>
+      <router-link class="navbar-item is-hidden-mobile" to="/dashboard/phone" v-bind:class="{ active: isActive('phone') }" @click="setActive('phone')">Phone</router-link>
+      <router-link class="navbar-item is-hidden-mobile" to="/dashboard/calendar" v-bind:class="{ active: isActive('calendar') }" @click="setActive('calendar')">Calendar</router-link>
       <a class="navbar-item is-hidden-mobile" href="javascript://" v-on:click.prevent="logout">
         Logout
       </a>
-      <div class="navbar-burger is-hidden-desktop is-hidden-tablet" v-bind:class="[navActive ? navActiveClass : '']" v-on:click="navSwitch()">
+  <div class="navbar-burger is-hidden-desktop is-hidden-tablet" v-on:click="toggle" v-click-outside="hide">
         <span></span>
         <span></span>
         <span></span>
       </div>
     </div>
-    <div class="navbar-menu is-hidden-desktop is-hidden-tablet" v-bind:class="[navActive ? navActiveClass : '']">
+    <div class="navbar-menu is-hidden-desktop is-hidden-tablet is-active" v-show="opened">
       <div class="navbar-mobile columns">
         <div class="column">
           <ul>
-            <li>
-              <a class="mobile-items"  href="javascript://" v-bind:class="{ active: isActive('home') }" v-on:click="setActive('home')">
-            Home
-              </a>
+            <li @click="hide">
+              <router-link class="mobile-items" to="/dashboard" v-bind:class="{ active: isActive('home') }" @click="setActive('home')">Home</router-link>
             </li>
-            <li>
-              <a  class="mobile-items" href="javascript://" v-bind:class="{ active: isActive('projects') }" v-on:click="setActive('projects')">
-            Projects
-              </a>
+            <li @click="hide">
+              <router-link class="mobile-items" to="/dashboard/projects" v-bind:class="{ active: isActive('projects') }" v-on:click="setActive('projects')">Projects</router-link>
             </li>
-            <li>
-              <a class="mobile-items"  href="javascript://" v-bind:class="{ active: isActive('phone') }" v-on:click="setActive('phone')">
-            Phone
-              </a>
+  <li @click="hide">
+              <router-link class="mobile-items" to="/dashboard/phone" v-bind:class="{ active: isActive('phone') }" @click="setActive('phone')">Phone</router-link>
             </li>
-            <li>
-              <a class="mobile-items" href="javascript://" v-bind:class="{ active: isActive('calendar') }" v-on:click="setActive('calendar')">
-            Calendar
-              </a>
+  <li @click="hide">
+              <router-link class="mobile-items" to="/dashboard/calendar" v-bind:class="{ active: isActive('calendar') }" @click="setActive('calendar')">Calendar</router-link>
             </li>
-            <li>
+  <li @click="hide">
               <a class="mobile-items" href="javascript://" v-on:click.prevent="logout">
                 Logout
               </a>
@@ -55,12 +47,15 @@
 </template>
 
 <script>
+  import ClickOutside from 'vue-click-outside'
+
   export default {
     data () {
       return {
         activeItem: 'home',
         navActive: false,
-        navActiveClass: 'is-active'
+        navActiveClass: 'is-active',
+        opened: false
       }
     },
     methods: {
@@ -68,15 +63,21 @@
         return this.activeItem === menuItem
       },
       setActive: function (menuItem) {
+        this.opened = false
         this.activeItem = menuItem
       },
-      navSwitch: function () {
-        if (this.navActive === false) {
-          this.navActive = true
-        } else {
-          this.navActive = false
-        }
+      toggle () {
+        this.opened = true
+      },
+      hide () {
+        this.opened = false
       }
+    },
+    mounted () {
+      this.popupItem = this.$el
+    },
+    directives: {
+      ClickOutside
     },
     props: {
       logout: Function
