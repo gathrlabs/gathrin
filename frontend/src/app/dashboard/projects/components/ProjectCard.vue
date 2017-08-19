@@ -66,7 +66,11 @@ export default {
   },
   methods: {
     toggle () {
-      this.opened = true
+      if (this.opened === false) {
+        this.opened = true
+      } else {
+        this.opened = false
+      }
     },
     hide () {
       this.opened = false
@@ -84,10 +88,13 @@ export default {
 <style scoped>
 
 .card {
+    transition: box-shadow .3s;
     border-radius: 4px;
     border: none;
-    box-shadow: 0 2px 20px 0px rgba(10, 10, 10, 0.1) !important;
-    -webkit-box-shadow: 0 2px 20px 0px rgba(10, 10, 10, 0.1) !important;
+  }
+
+.card:hover {
+    box-shadow: 0 0 21px rgba(33,33,33,.2);
 }
 
 .card-header-title {

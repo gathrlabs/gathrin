@@ -4,14 +4,14 @@
       <a class="navbar-item">
         <div class="gathr">/</div>
       </a>
-      <router-link class="navbar-item is-hidden-mobile" to="/dashboard" v-bind:class="{ active: isActive('home') }" @click="setActive('home')">Home</router-link>
-      <router-link class="navbar-item is-hidden-mobile" to="/dashboard/projects" v-bind:class="{ active: isActive('projects') }" v-on:click="setActive('projects')">Projects</router-link>
-      <router-link class="navbar-item is-hidden-mobile" to="/dashboard/phone" v-bind:class="{ active: isActive('phone') }" @click="setActive('phone')">Phone</router-link>
-      <router-link class="navbar-item is-hidden-mobile" to="/dashboard/calendar" v-bind:class="{ active: isActive('calendar') }" @click="setActive('calendar')">Calendar</router-link>
+      <router-link class="navbar-item is-hidden-mobile" to="/dashboard">Home</router-link>
+      <router-link class="navbar-item is-hidden-mobile" to="/dashboard/projects">Projects</router-link>
+      <router-link class="navbar-item is-hidden-mobile" to="/dashboard/phone">Phone</router-link>
+      <router-link class="navbar-item is-hidden-mobile" to="/dashboard/calendar">Calendar</router-link>
       <a class="navbar-item is-hidden-mobile" href="javascript://" v-on:click.prevent="logout">
         Logout
       </a>
-  <div class="navbar-burger is-hidden-desktop is-hidden-tablet" v-on:click="toggle" v-click-outside="hide">
+  <div class="navbar-burger is-hidden-desktop is-hidden-tablet" v-bind:class="{ 'is-active': opened }" v-on:click="toggle" v-click-outside="hide">
         <span></span>
         <span></span>
         <span></span>
@@ -22,16 +22,16 @@
         <div class="column">
           <ul>
             <li @click="hide">
-              <router-link class="mobile-items" to="/dashboard" v-bind:class="{ active: isActive('home') }" @click="setActive('home')">Home</router-link>
+              <router-link class="mobile-items" to="/dashboard">Home</router-link>
             </li>
             <li @click="hide">
-              <router-link class="mobile-items" to="/dashboard/projects" v-bind:class="{ active: isActive('projects') }" v-on:click="setActive('projects')">Projects</router-link>
+              <router-link class="mobile-items" to="/dashboard/projects">Projects</router-link>
             </li>
   <li @click="hide">
-              <router-link class="mobile-items" to="/dashboard/phone" v-bind:class="{ active: isActive('phone') }" @click="setActive('phone')">Phone</router-link>
+              <router-link class="mobile-items" to="/dashboard/phone">Phone</router-link>
             </li>
   <li @click="hide">
-              <router-link class="mobile-items" to="/dashboard/calendar" v-bind:class="{ active: isActive('calendar') }" @click="setActive('calendar')">Calendar</router-link>
+              <router-link class="mobile-items" to="/dashboard/calendar">Calendar</router-link>
             </li>
   <li @click="hide">
               <a class="mobile-items" href="javascript://" v-on:click.prevent="logout">
@@ -59,15 +59,12 @@
       }
     },
     methods: {
-      isActive: function (menuItem) {
-        return this.activeItem === menuItem
-      },
-      setActive: function (menuItem) {
-        this.opened = false
-        this.activeItem = menuItem
-      },
       toggle () {
-        this.opened = true
+        if (this.opened === false) {
+          this.opened = true
+        } else {
+          this.opened = false
+        }
       },
       hide () {
         this.opened = false
@@ -112,7 +109,7 @@
     transition: all 0.3s ease;
   }
 
-  .active {
+  .router-link-exact-active {
     box-shadow: inset 0 -6px #5b80ff;
     cursor: default;
   }
@@ -139,6 +136,14 @@
     line-height: 30px;
     font-family: Avenir-Heavy;
     color: #FFF;
+  }
+
+  .navbar-burger {
+    margin-top: 12px;
+  }
+
+  .navbar-burger:hover {
+    background-color: #FFF;
   }
 
   .navbar-burger.is-active span {

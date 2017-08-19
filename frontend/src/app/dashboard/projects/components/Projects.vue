@@ -3,7 +3,7 @@
     <div class="page__header">
       <div class="page__title">Project Board</div>
     </div>
-    <div class="columns is-desktop is-multiline">
+    <div class="columns is-mobile is-multiline">
       <projectcard></projectcard>
       <projectcard></projectcard>
       <projectcard></projectcard>
