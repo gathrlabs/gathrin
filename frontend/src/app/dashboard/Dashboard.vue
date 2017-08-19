@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard">
-    <navigation :logout="logout"></navigation>
+    <navigation :user="user" :logout="logout"></navigation>
     <div class="staging">
       <router-view></router-view>
     </div>

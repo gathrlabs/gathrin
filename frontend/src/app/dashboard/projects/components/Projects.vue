@@ -5,8 +5,6 @@
     </div>
     <div class="columns is-mobile is-multiline">
       <projectcard></projectcard>
-      <projectcard></projectcard>
-      <projectcard></projectcard>
     </div>
   </section>
 </template>
